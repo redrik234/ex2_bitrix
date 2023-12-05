@@ -28,6 +28,13 @@ $arTemplateParameters = array(
 		"DEFAULT" =>"N",
 		"REFRESH"=> "Y",
 	),
+	"SPECIALDATE" => Array(
+		"PARENT" => 'LIST_SETTINGS',
+		"NAME" => GetMessage("SPECIALDATE"),
+		"TYPE" => "CHECKBOX",
+		"DEFAULT" => "Y",
+	),
+	
 );
 
 if (($arCurrentValues['USE_SHARE'] ?? 'N') === 'Y')

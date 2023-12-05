@@ -46,6 +46,7 @@ $APPLICATION->SetTitle("Новости");
 		1 => "",
 	),
 	"HIDE_LINK_WHEN_NO_DETAIL" => "Y",
+	"SPECIALDATE" => "Y",
 	"DISPLAY_NAME" => "Y",
 	"META_KEYWORDS" => "-",
 	"META_DESCRIPTION" => "-",
