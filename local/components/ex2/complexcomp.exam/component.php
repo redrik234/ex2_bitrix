@@ -21,9 +21,12 @@ $arDefaultUrlTemplates404 = array(
 	"sections_top" => "",
 	"section" => "#SECTION_ID#/",
 	"detail" => "#SECTION_ID#/#ELEMENT_ID#/",
+	"exampage" => "exam/new/#PARAM1#/?PARAM2=#PARAM2#",
 );
 
-$arDefaultVariableAliases404 = array();
+$arDefaultVariableAliases404 = array(
+	"exampage" => ["PARAM2"]
+);
 
 $arDefaultVariableAliases = array();
 
@@ -32,6 +35,8 @@ $arComponentVariables = array(
 	"SECTION_CODE",
 	"ELEMENT_ID",
 	"ELEMENT_CODE",
+	"PARAM1",
+	"PARAM2"
 );
 
 if($arParams["SEF_MODE"] == "Y")
@@ -67,6 +72,9 @@ if($arParams["SEF_MODE"] == "Y")
 	)
 		$b404 = true;
 
+	if($componentPage == "exampage" && (!isset($arVariables["PARAM1"]) || empty($arVariables["PARAM1"])))
+		$b404 = true;
+
 	if($b404 && CModule::IncludeModule('iblock'))
 	{
 		$folder404 = str_replace("\\", "/", $arParams["SEF_FOLDER"]);
@@ -95,6 +103,7 @@ if($arParams["SEF_MODE"] == "Y")
 		"VARIABLES" => $arVariables,
 		"ALIASES" => $arVariableAliases,
 	);
+
 }
 else
 {
@@ -109,6 +118,8 @@ else
 		$componentPage = "detail";
 	elseif(isset($arVariables["ELEMENT_CODE"]) && strlen($arVariables["ELEMENT_CODE"]) > 0)
 		$componentPage = "detail";
+	elseif(isset($arVariables["PARAM1"]) && isset($arVariables["PARAM2"]))
+		$componentPage = "exampage";
 	elseif(isset($arVariables["SECTION_ID"]) && intval($arVariables["SECTION_ID"]) > 0)
 		$componentPage = "section";
 	elseif(isset($arVariables["SECTION_CODE"]) && strlen($arVariables["SECTION_CODE"]) > 0)
@@ -121,10 +132,12 @@ else
 		"URL_TEMPLATES" => Array(
 			"section" => htmlspecialcharsbx($APPLICATION->GetCurPage())."?".$arVariableAliases["SECTION_ID"]."=#SECTION_ID#",
 			"detail" => htmlspecialcharsbx($APPLICATION->GetCurPage())."?".$arVariableAliases["SECTION_ID"]."=#SECTION_ID#"."&".$arVariableAliases["ELEMENT_ID"]."=#ELEMENT_ID#",
+			"exampage" => htmlspecialcharsbx($APPLICATION->GetCurPage())."?".$arVariableAliases["PARAM1"]."=#PARAM1#"."&".$arVariableAliases["PARAM2"]."=#PARAM2#"
 		),
 		"VARIABLES" => $arVariables,
 		"ALIASES" => $arVariableAliases
 	);
 }
+
 $this->IncludeComponentTemplate($componentPage);
 ?>

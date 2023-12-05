@@ -15,6 +15,15 @@ $this->setFrameMode(true);
 <?
 //ссылка на страницу станицу exampage 
 //$url = ...
+$params = [
+	'#PARAM1#' => 123,
+	'#PARAM2#' => 456
+];
+
+$url = str_replace(array_keys($params), array_values($params), $arResult['URL_TEMPLATES']['exampage']);
+
+
+
 ?>
 <?=GetMessage("EXAM_TEXT_LINK_CP_PHOTO")?> <a href="<?=$url?>"><?=$url?></a>
 
