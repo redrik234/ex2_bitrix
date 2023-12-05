@@ -25,7 +25,7 @@ IncludeTemplateLangFile(__FILE__);
 		
 	</style>
 	<![endif]-->
-
+	<meta property= "specialdate" content="<?$APPLICATION->ShowProperty("specialdate");?>">
 	<title><?$APPLICATION->ShowTitle()?></title>
 </head>
 <body>
@@ -137,6 +137,7 @@ $APPLICATION->IncludeComponent("bitrix:search.form", "flat", Array(
 					</div>
 				</div>
 
+<?$APPLICATION->ShowViewContent('prices');?>
 				<div class="information-block">
 					<div class="top"></div>
 					<div class="information-block-inner">
