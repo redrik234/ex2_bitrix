@@ -8,4 +8,5 @@ foreach($arResult['DATA'] as $news) {
 $arResult['MAX_PRICE'] = max($products);
 $arResult['MIN_PRICE'] = min($products);
 $this->__component->SetResultCacheKeys(['MAX_PRICE', 'MIN_PRICE']);
+
 ?>

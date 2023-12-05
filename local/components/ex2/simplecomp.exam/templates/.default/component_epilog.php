@@ -9,4 +9,5 @@ if (isset($arResult['MAX_PRICE']) && isset($arResult['MIN_PRICE'])) {
     $APPLICATION->AddViewContent('prices', $html);
 }
 
+
 ?>
