@@ -1,10 +1,16 @@
 <?
-if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die;
 
-$arComponentDescription = array(
-	"NAME" => GetMessage("SIMPLECOMP_EXAM2_NAME"),
-	"PATH" => array(
-		"ID" => "ex2simple",
-	),
-);
+use Bitrix\Main\Localization\Loc;
+Loc::loadMessages(__FILE__);
+
+$arComponentDescription = [
+    'NAME' => Loc::GetMessage('SIMPLECOMP_EXAM2_NAME'),
+    'CACHE_PATH' => 'Y',
+    'PATH' => [
+        'ID'    => 'ex2simplecomp',
+        'NAME'  => Loc::GetMessage('EXAM2')
+    ]
+    ];
+
 ?>
